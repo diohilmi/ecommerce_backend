@@ -33,4 +33,23 @@ Route::apiResource('/products/seller', \App\Http\Controllers\Api\ProductControll
 Route::post('/products/seller/{id}', [\App\Http\Controllers\Api\ProductController::class, 'update'])->middleware('auth:sanctum');
 
 //address
-Route::apiResource('/buyer/addresses', \App\Http\Controllers\Api\AddressController::class)->middleware('auth:sanctum');
+Route::apiResource('/addresses/buyer', \App\Http\Controllers\Api\AddressController::class)->middleware('auth:sanctum');
+
+//orders
+Route::post('/orders/buyer', [\App\Http\Controllers\Api\OrderController::class, 'createOrder'])->middleware('auth:sanctum');
+
+//store
+Route::get('/stores/buyer', [\App\Http\Controllers\Api\StoreController::class, 'index'])->middleware('auth:sanctum');
+
+//products by store
+Route::get('/buyer/stores/{id}/products', [\App\Http\Controllers\Api\StoreController::class, 'productByStore'])->middleware('auth:sanctum');
+
+//update resi
+Route::put('/seller/orders/{id}/update-resi', [\App\Http\Controllers\Api\OrderController::class, 'updateShippingNumber'])->middleware('auth:sanctum');
+
+//history order buyer
+Route::get('/buyer/histories', [\App\Http\Controllers\Api\OrderController::class, 'historyOrderBuyer'])->middleware('auth:sanctum');
+
+//history order seller
+Route::get('/seller/histories', [\App\Http\Controllers\Api\OrderController::class, 'historyOrderSeller'])->middleware('auth:sanctum');
+

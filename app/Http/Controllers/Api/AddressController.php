@@ -29,6 +29,7 @@ class AddressController extends Controller
             'city' => ['required', 'string', 'max:255'],
             'district' => ['required', 'string', 'max:255'],
             'postcode' => ['required', 'string', 'max:255'],
+            'is_default' => ['required', 'boolean'],
 
         ]);
 
@@ -40,6 +41,7 @@ class AddressController extends Controller
             'city' => $request->city,
             'district' => $request->district,
             'postcode' => $request->postcode,
+            'is_default' => $request->is_default,
         ]);
 
         return response()->json([
@@ -59,6 +61,7 @@ class AddressController extends Controller
             'city' => ['required', 'string', 'max:255'],
             'district' => ['required', 'string', 'max:255'],
             'postcode' => ['required', 'string', 'max:255'],
+            'is_default' => ['required', 'boolean'],
         ]);
 
         $address = Address::find($id);
@@ -69,6 +72,7 @@ class AddressController extends Controller
             'city' => $request->city,
             'district' => $request->district,
             'postcode' => $request->postcode,
+            'is_default' => $request->is_default,
         ]);
 
         return response()->json([
